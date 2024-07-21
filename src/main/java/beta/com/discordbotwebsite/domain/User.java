@@ -1,6 +1,8 @@
 package beta.com.discordbotwebsite.domain;
 
+import beta.com.discordbotwebsite.model.Address;
 import beta.com.discordbotwebsite.model.Roles;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
@@ -43,6 +45,9 @@ public class User {
     @NotNull
     @Size(max = 255)
     private String discordid;
+
+    @Valid
+    private Address userAddress;
 
     private Roles roles;
 

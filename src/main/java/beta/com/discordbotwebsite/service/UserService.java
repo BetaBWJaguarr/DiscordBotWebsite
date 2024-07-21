@@ -17,10 +17,13 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
-    public UserService(final UserRepository userRepository, final PasswordEncoder passwordEncoder) {
+    public UserService(final UserRepository userRepository, final PasswordEncoder passwordEncoder,
+            final UserMapper userMapper) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
     }
 
     public Page<UserDTO> findAll(final String filter, final Pageable pageable) {
@@ -38,50 +41,32 @@ public class UserService {
         }
         return new PageImpl<>(page.getContent()
                 .stream()
-                .map(user -> mapToDTO(user, new UserDTO()))
+                .map(user -> userMapper.updateUserDTO(user, new UserDTO()))
                 .toList(),
                 pageable, page.getTotalElements());
     }
 
     public UserDTO get(final UUID id) {
         return userRepository.findById(id)
-                .map(user -> mapToDTO(user, new UserDTO()))
+                .map(user -> userMapper.updateUserDTO(user, new UserDTO()))
                 .orElseThrow(NotFoundException::new);
     }
 
     public UUID create(final UserDTO userDTO) {
         final User user = new User();
-        mapToEntity(userDTO, user);
+        userMapper.updateUser(userDTO, user, passwordEncoder);
         return userRepository.save(user).getId();
     }
 
     public void update(final UUID id, final UserDTO userDTO) {
         final User user = userRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
-        mapToEntity(userDTO, user);
+        userMapper.updateUser(userDTO, user, passwordEncoder);
         userRepository.save(user);
     }
 
     public void delete(final UUID id) {
         userRepository.deleteById(id);
-    }
-
-    private UserDTO mapToDTO(final User user, final UserDTO userDTO) {
-        userDTO.setId(user.getId());
-        userDTO.setUsername(user.getUsername());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setPhonenumber(user.getPhonenumber());
-        userDTO.setDiscordid(user.getDiscordid());
-        return userDTO;
-    }
-
-    private User mapToEntity(final UserDTO userDTO, final User user) {
-        user.setUsername(userDTO.getUsername());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        user.setPhonenumber(userDTO.getPhonenumber());
-        user.setDiscordid(userDTO.getDiscordid());
-        return user;
     }
 
     public boolean emailExists(final String email) {
