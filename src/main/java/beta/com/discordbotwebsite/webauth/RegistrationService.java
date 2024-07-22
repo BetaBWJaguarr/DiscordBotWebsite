@@ -1,6 +1,8 @@
-package beta.com.discordbotwebsite.webauth;
+package beta.com.discordbotwebsite.service;
 
 import beta.com.discordbotwebsite.domain.User;
+import beta.com.discordbotwebsite.model.ApproveStatus;
+import beta.com.discordbotwebsite.model.RegistrationRequest;
 import beta.com.discordbotwebsite.model.Roles;
 import beta.com.discordbotwebsite.repos.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +18,7 @@ public class RegistrationService {
     private final PasswordEncoder passwordEncoder;
 
     public RegistrationService(final UserRepository userRepository,
-                               final PasswordEncoder passwordEncoder) {
+            final PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -32,6 +34,8 @@ public class RegistrationService {
         user.setDiscordid(registrationRequest.getDiscordid());
         user.setUserAddress(registrationRequest.getUserAddress());
         user.setRoles(Roles.USER);
+        user.setApproveStatus(ApproveStatus.PENDING);
+        user.setStatus(false);
         userRepository.save(user);
     }
 

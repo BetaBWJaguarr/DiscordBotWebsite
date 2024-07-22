@@ -1,5 +1,6 @@
 package beta.com.discordbotwebsite.model;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.UUID;
@@ -33,5 +34,14 @@ public class UserDTO {
     @NotNull
     @Size(max = 255)
     private String discordid;
+
+    @Valid
+    private Address userAddress;
+
+    private Roles roles;
+
+    private ApproveStatus approveStatus;
+
+    private Boolean status;
 
 }

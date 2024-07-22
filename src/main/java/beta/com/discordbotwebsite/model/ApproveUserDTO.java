@@ -1,21 +1,24 @@
 package beta.com.discordbotwebsite.model;
 
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Getter
 @Setter
-public class AuthenticationRequest {
+public class ApproveUserDTO {
+
+    private UUID id;
 
     @NotNull
-    @Size(max = 255)
-    private String email;
+    private UUID userid;
 
     @NotNull
-    @Size(max = 255)
-    private String password;
+    private UUID adminid;
+
+    @NotNull
+    private Boolean status;
 
 }

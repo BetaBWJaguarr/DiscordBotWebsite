@@ -4,10 +4,9 @@ import beta.com.discordbotwebsite.domain.User;
 import beta.com.discordbotwebsite.model.UserDTO;
 import beta.com.discordbotwebsite.repos.UserRepository;
 import beta.com.discordbotwebsite.util.NotFoundException;
+import java.util.List;
 import java.util.UUID;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,24 +25,11 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public Page<UserDTO> findAll(final String filter, final Pageable pageable) {
-        Page<User> page;
-        if (filter != null) {
-            UUID uuidFilter = null;
-            try {
-                uuidFilter = UUID.fromString(filter);
-            } catch (final IllegalArgumentException illegalArgumentException) {
-                // keep null - no parseable input
-            }
-            page = userRepository.findAllById(uuidFilter, pageable);
-        } else {
-            page = userRepository.findAll(pageable);
-        }
-        return new PageImpl<>(page.getContent()
-                .stream()
+    public List<UserDTO> findAll() {
+        final List<User> users = userRepository.findAll(Sort.by("id"));
+        return users.stream()
                 .map(user -> userMapper.updateUserDTO(user, new UserDTO()))
-                .toList(),
-                pageable, page.getTotalElements());
+                .toList();
     }
 
     public UserDTO get(final UUID id) {
