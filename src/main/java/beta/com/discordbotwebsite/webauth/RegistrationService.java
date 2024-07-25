@@ -1,8 +1,7 @@
-package beta.com.discordbotwebsite.service;
+package beta.com.discordbotwebsite.webauth;
 
 import beta.com.discordbotwebsite.domain.User;
 import beta.com.discordbotwebsite.model.ApproveStatus;
-import beta.com.discordbotwebsite.model.RegistrationRequest;
 import beta.com.discordbotwebsite.model.Roles;
 import beta.com.discordbotwebsite.repos.UserRepository;
 import lombok.extern.slf4j.Slf4j;

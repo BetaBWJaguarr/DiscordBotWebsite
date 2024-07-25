@@ -1,4 +1,4 @@
-package beta.com.discordbotwebsite.model;
+package beta.com.discordbotwebsite.webauth;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

@@ -1,6 +1,5 @@
 package beta.com.discordbotwebsite.dcmodbot.serversettings;
 
-
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
@@ -25,6 +24,20 @@ public class ServerSettings {
     public void setAntiVirusEnabled(String discordServerId, boolean antiVirusEnabled) {
         var filter = Filters.eq("_id", discordServerId);
         var update = Updates.set("settings.antivirus", antiVirusEnabled);
+        collection.updateOne(filter, update, new UpdateOptions().upsert(true));
+    }
+
+    // Verify System Feature
+    public void setVerifySystemEnabled(String discordServerId, boolean verifySystemEnabled) {
+        var filter = Filters.eq("_id", discordServerId);
+        var update = Updates.set("settings.verifySystem", verifySystemEnabled);
+        collection.updateOne(filter, update, new UpdateOptions().upsert(true));
+    }
+
+    // Voice Action Feature
+    public void setVoiceActionEnabled(String discordServerId, boolean voiceActionEnabled) {
+        var filter = Filters.eq("_id", discordServerId);
+        var update = Updates.set("settings.voiceAction", voiceActionEnabled);
         collection.updateOne(filter, update, new UpdateOptions().upsert(true));
     }
 }

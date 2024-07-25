@@ -24,5 +24,14 @@ public class ServerSettingsService {
         ServerSettings serverSettings = new ServerSettings(collection);
         serverSettings.setAntiVirusEnabled(discordServerId, antiVirusEnabled);
     }
-}
 
+    public void setVerifySystemEnabled(String discordServerId, boolean verifySystemEnabled) {
+        ServerSettings serverSettings = new ServerSettings(collection);
+        serverSettings.setVerifySystemEnabled(discordServerId, verifySystemEnabled);
+    }
+
+    public void setVoiceActionEnabled(String discordServerId, boolean voiceActionEnabled) {
+        ServerSettings serverSettings = new ServerSettings(collection);
+        serverSettings.setVoiceActionEnabled(discordServerId, voiceActionEnabled);
+    }
+}

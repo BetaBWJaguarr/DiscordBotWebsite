@@ -1,5 +1,9 @@
-package beta.com.discordbotwebsite.model;
+package beta.com.discordbotwebsite.webauth;
 
+import beta.com.discordbotwebsite.model.Address;
+import beta.com.discordbotwebsite.model.ApproveStatus;
+import beta.com.discordbotwebsite.model.Roles;
+import beta.com.discordbotwebsite.model.UserEmailUnique;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
