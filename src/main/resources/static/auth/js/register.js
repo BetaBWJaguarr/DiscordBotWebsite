@@ -1,10 +1,14 @@
 document.getElementById('registerForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const termsAccepted = document.getElementById('terms').checked;
-
-    if (!termsAccepted) {
-        alert("You must agree to the terms to proceed.");
-        return;
+    var termsChecked = document.getElementById('terms').checked;
+    if (!termsChecked) {
+        event.preventDefault();
+        var alertMessage = document.getElementById('alertMessage');
+        alertMessage.classList.add('show');
+        setTimeout(function() {
+            alertMessage.classList.add('hidden');
+        }, 6000);
+        setTimeout(function() {
+            alertMessage.classList.remove('show', 'hidden');
+        }, 7000);
     }
 });

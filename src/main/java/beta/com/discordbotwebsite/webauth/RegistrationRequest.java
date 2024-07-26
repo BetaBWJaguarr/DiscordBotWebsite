@@ -15,24 +15,24 @@ import lombok.Setter;
 @Setter
 public class RegistrationRequest {
 
-    @NotNull
+    @NotNull(message = "{register.username.required}")
     @Size(max = 255)
     private String username;
 
-    @NotNull
+    @NotNull(message = "{register.email.required}")
     @Size(max = 255)
-    @UserEmailUnique
+    @UserEmailUnique(message = "{register.email.unique}")
     private String email;
 
-    @NotNull
+    @NotNull(message = "{register.password.required}")
     @Size(max = 255)
     private String password;
 
-    @NotNull
+    @NotNull(message = "{register.phonenumber.required}")
     @Size(max = 255)
     private String phonenumber;
 
-    @NotNull
+    @NotNull(message = "{register.discordid.required}")
     @Size(max = 255)
     private String discordid;
 

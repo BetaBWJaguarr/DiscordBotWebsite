@@ -1,8 +1,6 @@
 package beta.com.discordbotwebsite.domain;
 
-import beta.com.discordbotwebsite.model.Address;
-import beta.com.discordbotwebsite.model.ApproveStatus;
-import beta.com.discordbotwebsite.model.Roles;
+import beta.com.discordbotwebsite.model.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -26,24 +24,23 @@ public class User {
     @Id
     private UUID id;
 
-    @NotNull
+    @NotNull(message = "{register.username.required}")
     @Size(max = 255)
     private String username;
 
-    @Indexed(unique = true)
-    @NotNull
+    @NotNull(message = "{register.email.required}")
     @Size(max = 255)
     private String email;
 
-    @NotNull
+    @NotNull(message = "{register.password.required}")
     @Size(max = 255)
     private String password;
 
-    @NotNull
+    @NotNull(message = "{register.phonenumber.required}")
     @Size(max = 255)
     private String phonenumber;
 
-    @NotNull
+    @NotNull(message = "{register.discordid.required}")
     @Size(max = 255)
     private String discordid;
 
@@ -53,6 +50,9 @@ public class User {
     private Roles roles;
 
     private ApproveStatus approveStatus;
+
+    @Valid
+    private ProfilePicture profilePictures;
 
     private Boolean status;
 

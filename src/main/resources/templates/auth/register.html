@@ -21,36 +21,49 @@
         <div class="col-md-6 d-flex align-items-center justify-content-center">
             <div class="form-container">
                 <h2 class="text-center mb-4" th:text="#{register.title}">Sign Up</h2>
-                <form id="registerForm">
+                <div id="alertMessage" class="alert">
+                    <span th:text="#{register.mustbeaccept}"></span>
+                </div>
+                <form id="registerForm" th:action="@{/register}" method="post" th:object="${registrationRequest}">
                     <div class="mb-3">
                         <label for="username" class="form-label" th:text="#{register.username.label}"></label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                        <input type="text" class="form-control" id="username" name="username" th:field="*{username}" placeholder="Enter your username"
+                               th:classappend="${#fields.hasErrors('username')} ? 'input-error' : ''">
+                        <div class="error-message" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label" th:text="#{register.email.label}"></label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                        <input type="email" class="form-control" id="email" name="email" th:field="*{email}" placeholder="Enter your email"
+                               th:classappend="${#fields.hasErrors('email')} ? 'input-error' : ''">
+                        <div class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label" th:text="#{register.password.label}"></label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        <input type="password" class="form-control" id="password" name="password" th:field="*{password}" placeholder="Enter your password"
+                               th:classappend="${#fields.hasErrors('password')} ? 'input-error' : ''">
+                        <div class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                     </div>
                     <div class="mb-3">
                         <label for="phoneNumber" class="form-label" th:text="#{register.phoneNumber.label}"></label>
-                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+                        <input type="tel" class="form-control" id="phonenumber" name="phonenumber" th:field="*{phonenumber}" placeholder="Enter your phone number"
+                               th:classappend="${#fields.hasErrors('phonenumber')} ? 'input-error' : ''">
+                        <div class="error-message" th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}"></div>
                     </div>
                     <div class="mb-3">
                         <label for="discordId" class="form-label" th:text="#{register.discordId.label}"></label>
-                        <input type="text" class="form-control" id="discordId" name="discordId" placeholder="Enter your Discord ID" required>
+                        <input type="text" class="form-control" id="discordid" name="discordid" th:field="*{discordid}" placeholder="Enter your Discord ID"
+                               th:classappend="${#fields.hasErrors('discordid')} ? 'input-error' : ''">
+                        <div class="error-message" th:if="${#fields.hasErrors('discordid')}" th:errors="*{discordid}"></div>
                     </div>
                     <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="terms" required>
+                        <input class="form-check-input" type="checkbox" id="terms">
                         <label class="form-check-label" for="terms">
                             <span th:text="#{register.terms.label}"></span>
                             <a href="#" class="text-decoration-none" th:text="#{register.terms.link}"></a>
                         </label>
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary" th:text="#{register.signUp.button}"></button>
+                        <button type="submit" class="btn btn-primary shadow-none" th:text="#{register.signUp.button}"></button>
                     </div>
                     <div class="text-center mt-3">
                         <a href="#" class="text-decoration-none" th:text="#{register.signIn.link}"></a>

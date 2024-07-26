@@ -36,7 +36,8 @@ public class RegistrationController {
     }
 
     @GetMapping("/register")
-    public String register(@ModelAttribute final RegistrationRequest registrationRequest) {
+    public String register(Model model) {
+        model.addAttribute("registrationRequest", new RegistrationRequest());
         return "auth/register";
     }
 
