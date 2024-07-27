@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderation Discord Bot</title>
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/layout/css/layout.css}">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container d-flex align-items-center">
+            <a class="navbar-brand me-4" href="#">
+                <img src="/path/to/logo.png" alt="Logo" style="height: 40px; width: auto;">
+            </a>
+
+            <span class="navbar-brand me-4">Moderation Discord Bot</span>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto d-flex align-items-center">
+                    <!-- Help and Commands links -->
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="#">Commands</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto d-flex align-items-center">
+                    <li class="nav-item dropdown" th:if="${isAuthenticated}">
+                        <a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="/path/to/profile-pic.png" alt="Profile" style="height: 40px; width: 40px; border-radius: 50%;" class="me-2">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item" th:if="${isAuthenticated}">
+                        <a class="nav-link" href="#">Manage Modules</a>
+                    </li>
+
+                    <li class="nav-item" th:unless="${isAuthenticated}">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<main class="main-content container" th:fragment="content">
+</main>
+
+
+<footer class="text-center">
+    <div class="container">
+        <p>&copy; 2024 Discord Bot Website. All rights reserved.</p>
+    </div>
+</footer>
+
+
+<script th:src="@{https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js}"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js}"></script>
+</body>
+</html>

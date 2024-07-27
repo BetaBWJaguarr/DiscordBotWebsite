@@ -1,0 +1,38 @@
+body {
+    background-color: #ffe4e1;
+}
+
+.navbar {
+    background-color: #ff69b4;
+}
+
+.navbar-brand, .nav-link {
+    color: #fff !important;
+}
+
+.nav-link:hover {
+    background-color: #ff1493;
+    color: #fff !important;
+}
+
+footer {
+    background-color: #ff69b4;
+    color: #fff;
+    padding: 15px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.main-content {
+    min-height: 80vh;
+}
+
+.dropdown-menu {
+    background-color: #ff69b4;
+}
+
+.dropdown-item:hover {
+    background-color: #ff1493;
+    color: #fff;
+}

@@ -38,11 +38,12 @@ public class AuthSecurityConfig {
         return http.cors(withDefaults())
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/login", "/register", "auth/css/**", "auth/js/**", "/images/**", "/webjars/**").permitAll()
+                        .requestMatchers("/login","/register", "auth/css/**", "auth/js/**", "/images/**", "/webjars/**","/test","/layout/css/**","/forgot-password").permitAll()
                         .requestMatchers("/users/**").hasAnyAuthority(Roles.ADMINISTRATOR.name(), Roles.USER.name())
                         .anyRequest().hasAuthority(Roles.ADMINISTRATOR.name()))
                 .formLogin(form -> form
                         .loginPage("/login")
+                        .failureUrl("/login?error=true")
                         .usernameParameter("email"))
                 .rememberMe(rememberMe -> rememberMe
                         .alwaysRemember(true)
@@ -55,5 +56,4 @@ public class AuthSecurityConfig {
                         .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login?loginRequired=true")))
                 .build();
     }
-
 }
