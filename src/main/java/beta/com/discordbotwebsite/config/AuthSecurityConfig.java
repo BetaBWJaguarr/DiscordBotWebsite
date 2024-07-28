@@ -12,10 +12,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
 import java.time.Duration;
-
 
 @Configuration
 public class AuthSecurityConfig {
@@ -38,11 +36,12 @@ public class AuthSecurityConfig {
         return http.cors(withDefaults())
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/login","/register", "auth/css/**", "auth/js/**", "/images/**", "/webjars/**","/test","/layout/css/**","/forgot-password").permitAll()
+                        .requestMatchers("/login", "/register", "/auth/css/**", "/auth/js/**", "/images/**", "/webjars/**", "/test", "/layout/css/**", "/forgot-password","/general/css/***").permitAll()
                         .requestMatchers("/users/**").hasAnyAuthority(Roles.ADMINISTRATOR.name(), Roles.USER.name())
                         .anyRequest().hasAuthority(Roles.ADMINISTRATOR.name()))
                 .formLogin(form -> form
                         .loginPage("/login")
+                        .defaultSuccessUrl("/", true)
                         .failureUrl("/login?error=true")
                         .usernameParameter("email"))
                 .rememberMe(rememberMe -> rememberMe
@@ -52,8 +51,6 @@ public class AuthSecurityConfig {
                 .logout(logout -> logout
                         .logoutSuccessUrl("/login?logoutSuccess=true")
                         .deleteCookies("JSESSIONID"))
-                .exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login?loginRequired=true")))
                 .build();
     }
 }

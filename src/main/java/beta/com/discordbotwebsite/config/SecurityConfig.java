@@ -11,6 +11,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.List;
+
 @Configuration
 public class SecurityConfig {
 
@@ -27,18 +29,29 @@ public class SecurityConfig {
                                 .includeSubDomains(true)
                                 .maxAgeInSeconds(31536000)
                         )
-                        .contentTypeOptions(HeadersConfigurer.ContentTypeOptionsConfig::disable
-                        )
-                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin
-                        )
+                        .contentTypeOptions(HeadersConfigurer.ContentTypeOptionsConfig::disable)
+                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
                         .contentSecurityPolicy(csp -> csp
-                                .policyDirectives("default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'")
+                                .policyDirectives("default-src 'self'; img-src 'self' data:; " +
+                                        "script-src 'self' 'unsafe-inline'; " +
+                                        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+                                        "font-src 'self' https://fonts.gstatic.com; " +
+                                        "connect-src 'self' wss://mydomain.com; " +
+                                        "base-uri 'self'; " +
+                                        "form-action 'self'; " +
+                                        "frame-ancestors 'none'; " +
+                                        "object-src 'none'")
                         )
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").authenticated()
+                        .requestMatchers("/api/**").authenticated() // Secure API endpoints
                         .requestMatchers("/admin/**").hasRole(Roles.ADMINISTRATOR.name())
-                        .anyRequest().permitAll()
+                        .requestMatchers("/user/**").hasAnyRole(Roles.ADMINISTRATOR.name(), Roles.USER.name())
+                        .anyRequest().permitAll() // Allow public access to other pages
+                )
+                .sessionManagement(session -> session
+                        .sessionFixation().migrateSession() // Mitigate session fixation
+                        .invalidSessionUrl("/login?invalid-session=true") // Redirect invalid sessions
                 )
                 .build();
     }
@@ -46,10 +59,11 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOriginPattern("https://yourdomain.com");
-        configuration.addAllowedMethod("*");
-        configuration.addAllowedHeader("*");
+        configuration.setAllowedOrigins(List.of("https://mydomain.com", "https://sub.mydomain.com"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);
+        configuration.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);

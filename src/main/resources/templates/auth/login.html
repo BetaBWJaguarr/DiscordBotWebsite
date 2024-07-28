@@ -21,17 +21,17 @@
       <div class="mb-3">
         <label for="email" class="form-label" th:text="#{login.email.label}"></label>
         <input type="email" class="form-control" id="email" name="email" th:field="*{email}"
-               placeholder="Enter your email">
+               th:placeholder="#{login.email.placeholder}">
         <div id="emailError" class="error-message"></div>
       </div>
       <div class="mb-3">
-        <label for="password" class="form-label" th:text="#{login.password.label}">Password</label>
+        <label for="password" class="form-label" th:text="#{login.password.label}"></label>
         <input type="password" class="form-control" id="password" name="password" th:field="*{password}"
-               placeholder="Enter your password">
+               th:placeholder="#{login.password.placeholder}">
         <div id="passwordError" class="error-message"></div>
       </div>
       <div class="d-grid">
-        <button type="submit" class="btn btn-primary shadow-none" th:text="#{login.signIn.button}">Sign In</button>
+        <button type="submit" class="btn btn-primary shadow-none" th:text="#{login.signIn.button}"></button>
       </div>
       <div class="text-center mt-3">
         <a th:href="@{/forgot-password}" class="text-decoration-none" th:text="#{login.forgotPassword.link}"></a>

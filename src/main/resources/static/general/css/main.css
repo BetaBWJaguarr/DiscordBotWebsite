@@ -1,0 +1,83 @@
+.main-content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.intro-section {
+    background-color: #ffe4e1; /* Açık pembe arka plan rengi */
+    padding: 50px 0;
+    text-align: center;
+}
+
+.intro-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #c71585; /* Orkide moru yazı rengi */
+}
+
+.intro-section p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #8b008b; /* Koyu mor yazı rengi */
+}
+
+.features-section {
+    padding: 50px 0;
+}
+
+.feature {
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    background-color: #fff0f5;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #db7093;
+}
+
+.feature p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #8b008b;
+}
+
+.icon {
+    font-size: 3rem;
+    color: #ff1493;
+    margin-bottom: 20px;
+}
+
+.cta-section {
+    background-color: #ff69b4;
+    color: #ffffff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.cta-section a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.cta-section a:hover {
+    color: #ffe4e1;
+}

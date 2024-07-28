@@ -1,6 +1,8 @@
 package beta.com.discordbotwebsite.repos;
 
 import beta.com.discordbotwebsite.domain.User;
+
+import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,5 +16,8 @@ public interface UserRepository extends MongoRepository<User, UUID> {
     Page<User> findAllById(UUID id, Pageable pageable);
 
     boolean existsByEmailIgnoreCase(String email);
+
+    Optional<User> findByEmail(String email);
+
 
 }

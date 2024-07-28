@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page - Moderation Discord Bot</title>
+    <link rel="stylesheet" th:href="@{/general/css/main.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css}">
+</head>
+<body>
+
+<main class="main-content container" layout:fragment="content">
+    <section class="intro-section">
+        <h1>Moderation Discord Bot</h1>
+        <p>
+            The Moderation Discord Bot is a tool designed to keep your server organized, safe, and enjoyable. Our bot automatically detects malicious activities, manages users, and enhances your community's security.
+        </p>
+    </section>
+
+    <section class="features-section">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature text-center">
+                    <div class="icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h3>Anti-Swear System</h3>
+                    <p>
+                        Detect and automatically warn users for inappropriate language. The advanced anti-swear system keeps your server clean from unwanted words.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature text-center">
+                    <div class="icon">
+                        <i class="bi bi-chat-square-text"></i>
+                    </div>
+                    <h3>Anti-Spam System</h3>
+                    <p>
+                        Prevent spam messages from flooding your server with our efficient anti-spam system. Keep the conversations meaningful and spam-free.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature text-center">
+                    <div class="icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h3>Warn-Kick-Ban Commands</h3>
+                    <p>
+                        Automate moderation actions like muting, warning, kicking, and banning users. Our bot helps you maintain order and discipline in your server.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature text-center">
+                    <div class="icon">
+                        <i class="bi bi-bell"></i>
+                    </div>
+                    <h3>Logging System</h3>
+                    <p>
+                        Track activities within your server and maintain logs for moderation actions. Never miss important events with our comprehensive logging features.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature text-center">
+                    <div class="icon">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                    <h3>Voice Channel Swear Detection</h3>
+                    <p>
+                        Record and monitor swearing in voice channels to keep your server's verbal interactions safe and respectful.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature text-center">
+                    <div class="icon">
+                        <i class="bi bi-graph-up"></i>
+                    </div>
+                    <h3>Verification System</h3>
+                    <p>
+                        Manage and verify new members joining your server, ensuring a trusted and secure community environment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Set Up Your Discord Bot Today!</h2>
+        <p>
+            Start using our bot now and make your server a better place. Click <a href="#">here</a> for more information.
+        </p>
+    </section>
+</main>
+
+</body>
+</html>

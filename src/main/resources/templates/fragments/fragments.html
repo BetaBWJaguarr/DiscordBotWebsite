@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Fragments</title>
+</head>
+<body>
+
+<th:block th:fragment="inputField(type, id, name, labelKey, placeholderKey, fieldName, errorClass, errorMessageClass)">
+    <div class="mb-3">
+        <label th:for="${id}" class="form-label" th:text="#{${labelKey}}"></label>
+        <input th:type="${type}" class="form-control" th:id="${id}" th:name="${name}"
+               th:field="*{__${fieldName}__}" th:placeholder="#{${placeholderKey}}"
+               th:classappend="${#fields.hasErrors(fieldName)} ? ${errorClass} : ''">
+        <div th:if="${#fields.hasErrors(fieldName)}"
+             th:classappend="${errorMessageClass}"
+             th:errors="*{__${fieldName}__}"></div>
+    </div>
+</th:block>
+
+
+<th:block th:fragment="checkboxField(id, name, labelKey, fieldName, errorClass, errorMessageClass)">
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" th:id="${id}" th:name="${name}"
+               th:classappend="${#fields.hasErrors(fieldName)} ? ${errorClass} : ''">
+        <label th:for="${id}" class="form-check-label" th:text="#{${labelKey}}"></label>
+        <div th:if="${#fields.hasErrors(fieldName)}"
+             th:classappend="${errorMessageClass}"
+             th:errors="*{__${fieldName}__}"></div>
+    </div>
+</th:block>
+
+<th:block th:fragment="selectField(id, name, labelKey, fieldName, optionList, errorClass, errorMessageClass)">
+    <div class="mb-3">
+        <label th:for="${id}" class="form-label" th:text="#{${labelKey}}"></label>
+        <select class="form-select" th:id="${id}" th:name="${name}"
+                th:field="*{${fieldName}}" th:classappend="${#fields.hasErrors(fieldName)} ? ${errorClass} : ''">
+            <option th:each="option : ${optionList}" th:value="${option.value}" th:text="${option.display}"></option>
+        </select>
+        <div th:if="${#fields.hasErrors(fieldName)}"
+             th:classappend="${errorMessageClass}"
+             th:errors="*{__${fieldName}__}"></div>
+    </div>
+</th:block>
+
+</body>
+</html>
