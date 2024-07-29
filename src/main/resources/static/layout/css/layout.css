@@ -16,26 +16,85 @@ body {
 }
 
 .nav-link:hover {
-    background-color: #ff1493;
-    color: #fff !important;
-}
-
-footer {
     background-color: #ff69b4;
-    color: #fff;
-    padding: 15px 0;
-    width: 100%;
-    text-align: center;
-    position: relative;
-    bottom: 0;
+    color: #ea389a !important;
 }
 
 .main-content {
     min-height: 80vh;
 }
 
+footer {
+    background-color: #ff69b4;
+    color: #fff;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+footer .col-md-4 {
+    margin-bottom: 20px;
+}
+
+footer h5 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+footer ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+
+footer .careers-heading {
+    color: #ffb6c1;
+}
+
+footer .help-heading {
+    color: #ff85c0;
+}
+
+footer .commands-heading {
+    color: #ff85c0;
+}
+
+footer .legal-heading {
+    color: #ff1493;
+}
+
 .dropdown-menu {
     background-color: #ff69b4;
+}
+
+.dropdown-color {
+    color: #fff;
 }
 
 .dropdown-item:hover {

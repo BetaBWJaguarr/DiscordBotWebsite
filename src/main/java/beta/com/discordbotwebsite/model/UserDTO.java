@@ -45,6 +45,9 @@ public class UserDTO {
     @Valid
     private ProfilePicture profilePictures;
 
+    @Valid
+    private Interests interests;
+
     private Boolean status;
 
 }

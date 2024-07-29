@@ -85,3 +85,28 @@ h2 {
 .input-error + .error-message {
     display: block;
 }
+
+.support-link {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff7eb9, #ff65a3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.support-link:hover {
+    background: linear-gradient(45deg, #ff65a3, #ff7eb9);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.support-link:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

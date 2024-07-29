@@ -1,9 +1,6 @@
 package beta.com.discordbotwebsite.webauth;
 
-import beta.com.discordbotwebsite.model.Address;
-import beta.com.discordbotwebsite.model.ApproveStatus;
-import beta.com.discordbotwebsite.model.Roles;
-import beta.com.discordbotwebsite.model.UserEmailUnique;
+import beta.com.discordbotwebsite.model.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -42,6 +39,9 @@ public class RegistrationRequest {
     private Roles roles;
 
     private ApproveStatus approveStatus;
+
+    @Valid
+    private Interests interests;
 
     private Boolean status;
 

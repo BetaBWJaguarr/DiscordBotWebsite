@@ -44,5 +44,18 @@
     </div>
 </th:block>
 
+
+<th:block th:fragment="textareaField(id, name, labelKey, placeholderKey, fieldName, errorClass, errorMessageClass)">
+    <div class="mb-3">
+        <label th:for="${id}" class="form-label" th:text="#{${labelKey}}"></label>
+        <textarea class="form-control" th:id="${id}" th:name="${name}"
+                  th:field="*{__${fieldName}__}" th:placeholder="#{${placeholderKey}}"
+                  th:classappend="${#fields.hasErrors(fieldName)} ? ${errorClass} : ''"></textarea>
+        <div th:if="${#fields.hasErrors(fieldName)}"
+             th:classappend="${errorMessageClass}"
+             th:errors="*{__${fieldName}__}"></div>
+    </div>
+</th:block>
+
 </body>
 </html>

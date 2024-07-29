@@ -4,7 +4,7 @@
 }
 
 .intro-section {
-    background-color: #ffe4e1; /* Açık pembe arka plan rengi */
+    background-color: #ffe4e1;
     padding: 50px 0;
     text-align: center;
 }
@@ -12,7 +12,7 @@
 .intro-section h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #c71585; /* Orkide moru yazı rengi */
+    color: #c71585;
 }
 
 .intro-section p {
@@ -20,7 +20,7 @@
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
-    color: #8b008b; /* Koyu mor yazı rengi */
+    color: #8b008b;
 }
 
 .features-section {
@@ -80,4 +80,72 @@
 
 .cta-section a:hover {
     color: #ffe4e1;
+}
+
+.social-media-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.social-media-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #c71585;
+}
+
+.social-media-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-media-section li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-media-section a {
+    font-size: 2rem;
+    color: #8b008b;
+    transition: color 0.2s ease;
+}
+
+.social-media-section a:hover {
+    color: #ff1493;
+}
+
+.documentation-section {
+    background: linear-gradient(135deg, #ffe4e1 0%, #ffc0cb 100%);
+    padding: 50px 0;
+    text-align: center;
+    border-top: 1px solid #ffc0cb;
+}
+
+.documentation-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #c71585;
+}
+
+.documentation-section p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #8b008b;
+}
+
+.documentation-section .btn-primary {
+    background-color: #ff69b4;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.documentation-section .btn-primary:hover {
+    background-color: #ff1493;
 }

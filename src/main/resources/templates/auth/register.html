@@ -44,6 +44,31 @@
                         <div class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                     </div>
                     <div class="mb-3">
+                        <label for="interests" class="form-label" th:text="#{register.interests.label}">Interests / Activities</label>
+                        <div id="interests">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="interest1" name="interests" th:field="*{interests.activities}" value="Software">
+                                <label class="form-check-label" for="interest1" th:text="#{register.interests.software}"></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="interest2" name="interests" th:field="*{interests.activities}" value="Technology">
+                                <label class="form-check-label" for="interest2" th:text="#{register.interests.technology}"></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="interest3" name="interests" th:field="*{interests.activities}" value="Gaming">
+                                <label class="form-check-label" for="interest3" th:text="#{register.interests.gaming}"></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="interest4" name="interests" th:field="*{interests.activities}" value="Music">
+                                <label class="form-check-label" for="interest4" th:text="#{register.interests.music}"></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="interest5" name="interests" th:field="*{interests.activities}" value="Art">
+                                <label class="form-check-label" for="interest5" th:text="#{register.interests.art}"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label for="phoneNumber" class="form-label" th:text="#{register.phoneNumber.label}"></label>
                         <input type="tel" class="form-control" id="phonenumber" name="phonenumber" th:field="*{phonenumber}"
                                th:placeholder="#{register.phoneNumber.placeholder}" th:classappend="${#fields.hasErrors('phonenumber')} ? 'input-error' : ''">

@@ -33,6 +33,7 @@ public class RegistrationService {
         user.setDiscordid(registrationRequest.getDiscordid());
         user.setUserAddress(registrationRequest.getUserAddress());
         user.setRoles(Roles.USER);
+        user.setInterests(registrationRequest.getInterests());
         user.setApproveStatus(ApproveStatus.PENDING);
         user.setStatus(false);
         userRepository.save(user);
