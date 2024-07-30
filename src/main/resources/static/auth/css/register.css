@@ -9,14 +9,25 @@ body {
     padding: 55px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.6s ease-out;
 }
 
 h2 {
     font-weight: bold;
 }
 
-.form-label {
-    font-weight: 500;
+
+.input-group-text {
+    background-color: #ef32d9;
+    border: 2px solid #ef32d9;
+    color: white;
+    border-radius: 0.25rem;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 5px;
 }
 
 .form-control {
@@ -24,13 +35,14 @@ h2 {
     font-size: 18px;
     padding: 20px;
     border: 2px solid #ccc;
-    transition: border-color 0.3s;
+    font-weight: 500;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form-control:focus {
     border-color: #ef32d9;
     outline: none;
-    box-shadow: inset 0 -1px 0 #ddd;
+    box-shadow: 0 0 5px rgba(239, 50, 217, 0.5);
 }
 
 .btn-primary {
@@ -66,7 +78,7 @@ h2 {
 .overlay {
     background: rgba(239, 50, 217, 0.5);
     width: 100%;
-    height: 109%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,47 +88,21 @@ h2 {
     padding: 0;
 }
 
-
-.alert {
-    display: none;
-    margin-bottom: 1rem;
-    padding: 0.75rem 1.25rem;
-    border: 1px solid transparent;
-    border-radius: 0.375rem;
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-}
-.alert.show {
-    display: block;
-}
-.alert.hidden {
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-
-.required-field {
+.input-error {
     border-color: #e74c3c;
-}
-
-.required-field:focus {
-    border-color: #e74c3c;
-    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+    background-color: #fdecea;
 }
 
 .error-message {
     color: #e74c3c;
-    font-size: 14px;
+    font-size: 0.875rem;
     margin-top: 5px;
-}
-
-.input-error {
-    border: 2px solid #e74c3c;
-}
-
-.input-error + .error-message {
     display: block;
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    width: 100%;
+    padding-left: 15px
 }
 
 .form-check {
@@ -156,12 +142,32 @@ h2 {
     color: #6f42c1;
 }
 
-
-.form-container {
-    padding: 40px;
-    margin-top: 15px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.interests-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(95px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#signup-title {
+    animation: fadeInUp 0.5s ease-out;
+    font-size: 2.5rem;
+    color: #ef32d9;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+}
+
+#signup-title:hover {
+    color: #d028c5;
+}

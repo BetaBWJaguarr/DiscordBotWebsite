@@ -3,12 +3,11 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     if (!termsChecked) {
         event.preventDefault();
         var alertMessage = document.getElementById('alertMessage');
-        alertMessage.classList.add('show');
+        alertMessage.classList.add('alert-danger');
+        alertMessage.classList.remove('d-none');
+
         setTimeout(function() {
-            alertMessage.classList.add('hidden');
+            alertMessage.classList.add('d-none');
         }, 6000);
-        setTimeout(function() {
-            alertMessage.classList.remove('show', 'hidden');
-        }, 7000);
     }
 });

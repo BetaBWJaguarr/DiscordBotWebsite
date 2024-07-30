@@ -11,4 +11,14 @@ public class GeneralController extends BaseController {
     public String showMainPage(Model model) {
         return "general/main";
     }
+
+    @GetMapping("/manage-modules")
+    public String showManageModules(Model model) {
+        return "general/manage-modules";
+    }
+
+    @GetMapping("/commands")
+    public String showCommands(Model model) {
+        return "general/commands";
+    }
 }

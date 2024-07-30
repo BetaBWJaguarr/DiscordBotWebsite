@@ -27,9 +27,13 @@ public class SecurityConfig {
                 .headers(headers -> headers
                         .httpStrictTransportSecurity(hsts -> hsts
                                 .includeSubDomains(true)
+                                .preload(true)
                                 .maxAgeInSeconds(31536000)
                         )
                         .contentTypeOptions(HeadersConfigurer.ContentTypeOptionsConfig::disable)
+                        .xssProtection(xss -> xss
+                                .disable()
+                        )
                         .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
                         .contentSecurityPolicy(csp -> csp
                                 .policyDirectives("default-src 'self'; img-src 'self' data:; " +
@@ -42,16 +46,17 @@ public class SecurityConfig {
                                         "frame-ancestors 'none'; " +
                                         "object-src 'none'")
                         )
+                        .contentTypeOptions(HeadersConfigurer.ContentTypeOptionsConfig::disable)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").authenticated() // Secure API endpoints
+                        .requestMatchers("/api/**").authenticated()
                         .requestMatchers("/admin/**").hasRole(Roles.ADMINISTRATOR.name())
                         .requestMatchers("/user/**").hasAnyRole(Roles.ADMINISTRATOR.name(), Roles.USER.name())
-                        .anyRequest().permitAll() // Allow public access to other pages
+                        .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session
-                        .sessionFixation().migrateSession() // Mitigate session fixation
-                        .invalidSessionUrl("/login?invalid-session=true") // Redirect invalid sessions
+                        .sessionFixation().migrateSession()
+                        .invalidSessionUrl("/login?invalid-session=true")
                 )
                 .build();
     }

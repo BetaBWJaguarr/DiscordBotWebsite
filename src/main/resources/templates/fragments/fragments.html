@@ -57,5 +57,31 @@
     </div>
 </th:block>
 
+<th:block th:fragment="radioButtonGroup(id, name, labelKey, options, fieldName, errorClass, errorMessageClass)">
+    <div class="mb-3">
+        <label th:for="${id}" class="form-label" th:text="#{${labelKey}}"></label>
+        <div th:each="option : ${options}" class="form-check">
+            <input type="radio" class="form-check-input" th:id="${id + '-' + option.value}" th:name="${name}"
+                   th:value="${option.value}" th:checked="*{${fieldName} == option.value}"
+                   th:classappend="${#fields.hasErrors(fieldName)} ? ${errorClass} : ''">
+            <label th:for="${id + '-' + option.value}" class="form-check-label" th:text="${option.display}"></label>
+        </div>
+        <div th:if="${#fields.hasErrors(fieldName)}"
+             th:classappend="${errorMessageClass}"
+             th:errors="*{__${fieldName}__}"></div>
+    </div>
+</th:block>
+
+<th:block th:fragment="fileUploadField(id, name, labelKey, fieldName, errorClass, errorMessageClass)">
+    <div class="mb-3">
+        <label th:for="${id}" class="form-label" th:text="#{${labelKey}}"></label>
+        <input type="file" class="form-control" th:id="${id}" th:name="${name}"
+               th:classappend="${#fields.hasErrors(fieldName)} ? ${errorClass} : ''">
+        <div th:if="${#fields.hasErrors(fieldName)}"
+             th:classappend="${errorMessageClass}"
+             th:errors="*{__${fieldName}__}"></div>
+    </div>
+</th:block>
+
 </body>
 </html>

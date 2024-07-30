@@ -8,16 +8,62 @@ body {
 }
 
 .navbar {
-    background-color: #ff69b4;
+    background: linear-gradient(90deg, #ff69b4 0%, #ff85c0 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+}
+.navbar-brand, .nav-link {
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.navbar-brand, .nav-link {
-    color: #fff !important;
+.navbar-brand {
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.nav-link {
+    color: #f0f0f0;
+    margin-left: 20px;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .nav-link:hover {
-    background-color: #ff69b4;
-    color: #ea389a !important;
+    color: #892edc;
+    transform: scale(1.1);
+}
+
+.nav-link.contact-link {
+    color: #fff;
+    background-color: #ff1493;
+    border-radius: 20px;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link.contact-link:hover {
+    background-color: #d11287;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+    border-radius: 5px;
 }
 
 .main-content {
@@ -91,10 +137,17 @@ footer .legal-heading {
 
 .dropdown-menu {
     background-color: #ff69b4;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    padding: 0;
 }
 
 .dropdown-color {
     color: #fff;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
 }
 
 .dropdown-item:hover {
