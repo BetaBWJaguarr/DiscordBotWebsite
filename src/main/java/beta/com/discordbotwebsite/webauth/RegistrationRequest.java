@@ -41,6 +41,9 @@ public class RegistrationRequest {
     private ApproveStatus approveStatus;
 
     @Valid
+    private Subscription suscribeStatus;
+
+    @Valid
     private Interests interests;
 
     private Boolean status;

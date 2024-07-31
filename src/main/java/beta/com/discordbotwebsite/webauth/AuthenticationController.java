@@ -21,9 +21,9 @@ public class AuthenticationController {
     private MessageSource messageSource;
 
     @GetMapping("/login")
-    public String login(@RequestParam(value = "error", required = false) String error,
+    public String login(@RequestParam(value = "error", required = false) boolean error,
                         @ModelAttribute("authentication") AuthenticationRequest authenticationRequest, Model model) {
-        if (error != null) {
+        if (error) {
             String errorMessage = messageSource.getMessage("login.error", null, LocaleContextHolder.getLocale());
             model.addAttribute("errorMessage", errorMessage);
         }

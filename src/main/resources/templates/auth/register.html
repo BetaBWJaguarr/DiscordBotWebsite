@@ -81,12 +81,14 @@
                                th:placeholder="#{register.discordId.placeholder}" th:classappend="${#fields.hasErrors('discordid')} ? 'input-error' : ''">
                         <div class="error-message" th:if="${#fields.hasErrors('discordid')}" th:errors="*{discordid}"></div>
                     </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="terms">
-                        <label class="form-check-label" for="terms">
-                            <span th:text="#{register.terms.label}"></span>
-                            <a href="#" class="text-decoration-none" th:text="#{register.terms.link}"></a>
-                        </label>
+                    <div class="mb-3">
+                        <div class="terms-container">
+                            <input class="terms-input" type="checkbox" id="terms">
+                            <label class="terms-label" for="terms">
+                                <span th:text="#{register.terms.label}"></span>
+                                <a href="YOUR_TERMS_AND_CONDITIONS_URL" class="text-decoration-none" th:text="#{register.terms.link}"></a>
+                            </label>
+                        </div>
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary shadow-none" th:text="#{register.signUp.button}"></button>

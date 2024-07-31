@@ -36,6 +36,7 @@ public class RegistrationService {
         user.setInterests(registrationRequest.getInterests());
         user.setApproveStatus(ApproveStatus.PENDING);
         user.setStatus(false);
+        user.setSuscribeStatus(null);
         userRepository.save(user);
     }
 

@@ -106,7 +106,20 @@ h2 {
 }
 
 .form-check {
-    margin-bottom: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    gap: 10px;
+}
+
+.form-check:hover {
+    background-color: #e9e9e9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .form-check-input {
@@ -114,7 +127,9 @@ h2 {
     height: 20px;
     cursor: pointer;
     border: 2px solid #6c757d;
+    border-radius: 3px;
     transition: background-color 0.3s, border-color 0.3s;
+    margin-left: 25px;
 }
 
 .form-check-input:checked {
@@ -123,12 +138,12 @@ h2 {
 }
 
 .form-check-label {
-    margin-left: 10px;
     font-size: 16px;
     font-weight: 500;
     color: #333;
     cursor: pointer;
     transition: color 0.3s;
+    line-height: 1.5;
 }
 
 .form-check-label:hover {
@@ -146,6 +161,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    padding: 10px;
 }
 
 @keyframes fadeInUp {
@@ -171,3 +187,67 @@ h2 {
 #signup-title:hover {
     color: #d028c5;
 }
+
+.terms-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.terms-container:hover {
+    background-color: #f2f2f2;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.terms-input {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    border: 2px solid #6c757d;
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-right: 12px;
+    background-color: #ffffff;
+}
+
+.terms-input:checked {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.terms-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    transition: color 0.3s;
+    line-height: 1.5;
+}
+
+.terms-label a {
+    color: #6f42c1;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.terms-label a:hover {
+    color: #5a2a8f;
+    text-decoration: underline;
+}
+
+.terms-label:hover {
+    color: #6f42c1;
+}
+
+a {
+    cursor: pointer; /* Link tıklanabilirliğini artırır */
+}
+

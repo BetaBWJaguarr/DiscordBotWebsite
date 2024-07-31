@@ -238,3 +238,33 @@ h2 {
     transition: color 0.3s ease;
     pointer-events: none;
 }
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+.password-container .form-control {
+    padding-right: 40px;
+}
+.password-container .fa-lock {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 18px;
+    z-index: 1;
+}
+.password-container .fa-eye,.fa-eye-slash{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #6c757d;
+    font-size: 18px;
+    z-index: 1;
+    outline: none;
+}

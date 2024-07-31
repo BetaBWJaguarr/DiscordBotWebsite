@@ -55,6 +55,9 @@ public class User {
     private ProfilePicture profilePictures;
 
     @Valid
+    private Subscription suscribeStatus;
+
+    @Valid
     private Interests interests;
 
     private Boolean status;
