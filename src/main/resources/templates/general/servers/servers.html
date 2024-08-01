@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord-Servers</title>
+    <link rel="stylesheet" th:href="@{/general/servers/css/servers.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css}">
+</head>
+<body>
+
+<main class="main-content container" layout:fragment="content">
+    <section class="server-list">
+        <h1>Discord Servers</h1>
+        <p>
+            Here you can view and manage all the Discord servers where the Moderation Bot is active.
+        </p>
+        <div class="row">
+            <div class="col-md-4" th:each="server : ${servers}">
+                <div class="server-card">
+                    <img th:src="${server.iconUrl}" alt="Server Image">
+                    <div class="server-card-body">
+                        <div class="server-card-title" th:text="${server.name}">Server Name</div>
+                        <a href="#" th:href="@{/servers/manage-modules}" class="btn btn-primary btn-manage">Manage Modules</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

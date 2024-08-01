@@ -5,9 +5,11 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.exceptions.ErrorResponseException;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.api.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -33,13 +35,15 @@ public class DiscordManager {
                 return Optional.empty();
             }
 
+            guild.loadMembers();
+
             Member member = guild.getMemberById(discordId);
             if (member == null) {
                 logger.info("User not found in the guild with ID: " + discordId);
                 return Optional.empty();
             }
 
-            if (member.hasPermission(net.dv8tion.jda.api.Permission.ADMINISTRATOR)) {
+            if (member.hasPermission(Permission.ADMINISTRATOR)) {
                 logger.info("User is an administrator in guild: " + guild.getName());
                 return Optional.of(guild);
             } else {
@@ -97,5 +101,21 @@ public class DiscordManager {
         }
 
         return isUserAdminInAnyGuild(discordId);
+    }
+
+    public List<Guild> getGuildsWhereUserIsAdmin(String discordId) {
+        List<Guild> adminGuilds = new ArrayList<>();
+        JDA jda = jdaService.getJda();
+        List<Guild> guilds = jda.getGuilds();
+
+        for (Guild guild : guilds) {
+            Optional<Guild> optionalGuild = isUserAdminInGuild(discordId, guild.getId());
+
+            if (optionalGuild.isPresent()) {
+                adminGuilds.add(optionalGuild.get());
+            }
+        }
+
+        return adminGuilds;
     }
 }

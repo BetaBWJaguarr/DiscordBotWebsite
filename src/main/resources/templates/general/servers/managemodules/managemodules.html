@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Modules</title>
+    <link rel="stylesheet" th:href="@{/general/servers/managemodules/css/managemodules.css}">
+</head>
+<body>
+
+<main class="container my-5" layout:fragment="content">
+    <section class="manage-modules">
+        <h1 class="text-center mb-4">Manage Modules</h1>
+        <div class="search-bar mb-4">
+            <input type="text" class="form-control" placeholder="Search modules..." aria-label="Search modules">
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card module-card mb-4">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Module 1</h5>
+                        <p class="card-text">This is a description for Module 1. It gives a brief overview of what this module does.</p>
+                        <a href="#" class="btn btn-settings">Settings</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card module-card mb-4">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Module 2</h5>
+                        <p class="card-text">This is a description for Module 2. It provides details about the functionality of this module.</p>
+                        <a href="#" class="btn btn-settings">Settings</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card module-card mb-4">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Module 3</h5>
+                        <p class="card-text">This is a description for Module 3. It outlines the key features and uses of this module.</p>
+                        <a href="#" class="btn btn-settings">Settings</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card module-card mb-4">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Module 4</h5>
+                        <p class="card-text">This is a description for Module 4. It explains the functionalities and purpose of this new module.</p>
+                        <a href="#" class="btn btn-settings">Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

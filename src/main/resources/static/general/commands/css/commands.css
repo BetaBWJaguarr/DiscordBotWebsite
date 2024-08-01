@@ -1,0 +1,82 @@
+.commands {
+    margin-top: 50px;
+}
+
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #880e4f;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.page-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #ec407a, #f48fb1);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #ad1457;
+    margin-top: 10px;
+}
+
+
+.command-card {
+    border: 1px solid #f8bbd0;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.command-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.command-card .card-body {
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(145deg, #f8bbd0, #f48fb1);
+    border-radius: 12px;
+}
+
+.command-card .card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #880e4f;
+    margin-bottom: 10px;
+}
+
+.command-card .card-description {
+    font-size: 1.1rem;
+    color: #ad1457;
+    margin-bottom: 15px;
+}
+
+.command-card .card-usage {
+    font-size: 1rem;
+    color: #6a1b9a;
+}
+
+.card-usage code {
+    background: #f1f8e9;
+    padding: 4px 8px;
+    border-radius: 4px;
+}

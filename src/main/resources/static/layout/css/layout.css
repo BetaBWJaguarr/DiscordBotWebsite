@@ -73,11 +73,12 @@ body {
 footer {
     background-color: #ff69b4;
     color: #fff;
-    padding: 0;
+    padding: 30px 0;
     width: 100%;
     text-align: center;
     position: relative;
     bottom: 0;
+    border-top: 5px solid #ff85c0;
 }
 
 footer .container {
@@ -94,11 +95,15 @@ footer .row {
 
 footer .col-md-4 {
     margin-bottom: 20px;
+    flex: 1;
+    max-width: 300px;
 }
 
 footer h5 {
     margin-bottom: 1rem;
     font-weight: bold;
+    font-size: 1.2rem;
+    color: #fff;
 }
 
 footer ul {
@@ -113,10 +118,12 @@ footer ul li {
 footer ul li a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 footer ul li a:hover {
     text-decoration: underline;
+    color: #ffebef;
 }
 
 footer .careers-heading {
@@ -134,6 +141,7 @@ footer .commands-heading {
 footer .legal-heading {
     color: #ff1493;
 }
+
 
 .dropdown-menu {
     background-color: #ff69b4;
