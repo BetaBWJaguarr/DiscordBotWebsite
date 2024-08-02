@@ -2,7 +2,6 @@
     margin-top: 50px;
 }
 
-
 .header {
     text-align: center;
     margin-bottom: 40px;
@@ -38,27 +37,34 @@
 
 
 .command-card {
-    border: 1px solid #f8bbd0;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    overflow: hidden;
 }
 
 .command-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05) translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background-color: #fce4ec;
 }
 
 .command-card .card-body {
     padding: 20px;
     text-align: center;
-    background: linear-gradient(145deg, #f8bbd0, #f48fb1);
-    border-radius: 12px;
+    background: linear-gradient(135deg, #f8bbd0, #f48fb1);
+    border-radius: 15px;
+    transition: background 0.3s ease;
+}
+
+.command-card:hover .card-body {
+    background: linear-gradient(135deg, #f48fb1, #f8bbd0);
 }
 
 .command-card .card-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #880e4f;
     margin-bottom: 10px;
@@ -76,7 +82,46 @@
 }
 
 .card-usage code {
-    background: #f1f8e9;
+    background: #e8f5e9;
     padding: 4px 8px;
     border-radius: 4px;
+    color: #2e7d32;
+}
+
+.card-arguments {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.argument {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.arg-label {
+    font-weight: bold;
+    color: #880e4f;
+}
+
+.arg-detail {
+    flex: 1;
+    padding-left: 10px;
+    color: #ad1457;
+}
+
+.arg-type {
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.arg-type.required {
+    background-color: #e57373;
+}
+
+.arg-type.optional {
+    background-color: #64b5f6;
 }

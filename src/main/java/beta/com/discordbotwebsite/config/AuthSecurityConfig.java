@@ -36,7 +36,7 @@ public class AuthSecurityConfig {
         return http.cors(withDefaults())
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/login","/servers","/servers/manage-modules","/commands", "/", "/register", "/forgot-password","/auth/**","/general/**","/layout/**").permitAll()
+                        .requestMatchers("/login","/servers/**","/commands", "/", "/register", "/forgot-password","/auth/**","/general/**","/layout/**").permitAll()
                         .requestMatchers("/users/**").hasAnyAuthority(Roles.ADMINISTRATOR.name(), Roles.USER.name())
                         .anyRequest().hasAuthority(Roles.ADMINISTRATOR.name()))
                 .formLogin(form -> form

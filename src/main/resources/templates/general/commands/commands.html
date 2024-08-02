@@ -20,96 +20,215 @@
             <div class="col-md-4">
                 <div class="card command-card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Command 1</h5>
-                        <p class="card-description">This command performs action X. Use it to achieve Y.</p>
-                        <p class="card-usage">Usage: <code>/command1 [options]</code></p>
+                        <h5 class="card-title">/ban</h5>
+                        <p class="card-description">Bans a user from the server.</p>
+                        <p class="card-usage">Usage: <code>/ban &lt;username&gt; [duration] [reason] [delete_history_message_duration]</code></p>
+                        <div class="card-arguments">
+                            <div class="argument">
+                                <span class="arg-label">Username:</span>
+                                <span class="arg-detail">The user to ban.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                            <div class="argument">
+                                <span class="arg-label">Duration:</span>
+                                <span class="arg-detail">How long the ban will last.</span>
+                                <span class="arg-type optional">Optional</span>
+                            </div>
+                            <div class="argument">
+                                <span class="arg-label">Reason:</span>
+                                <span class="arg-detail">Reason for the ban.</span>
+                                <span class="arg-type optional">Optional</span>
+                            </div>
+                            <div class="argument">
+                                <span class="arg-label">Delete History Message Duration:</span>
+                                <span class="arg-detail">Duration for deleting history messages.</span>
+                                <span class="arg-type optional">Optional</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card command-card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Command 2</h5>
-                        <p class="card-description">This command executes function A. Suitable for task B.</p>
-                        <p class="card-usage">Usage: <code>/command2 [args]</code></p>
+                        <h5 class="card-title">/kick</h5>
+                        <p class="card-description">Kicks a user from the server.</p>
+                        <p class="card-usage">Usage: <code>/kick &lt;username&gt; [reason]</code></p>
+                        <div class="card-arguments">
+                            <div class="argument">
+                                <span class="arg-label">Username:</span>
+                                <span class="arg-detail">The user to kick.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                            <div class="argument">
+                                <span class="arg-label">Reason:</span>
+                                <span class="arg-detail">Reason for kicking the user.</span>
+                                <span class="arg-type optional">Optional</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card command-card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Command 3</h5>
-                        <p class="card-description">This command allows you to perform action C. It is used when you need D.</p>
-                        <p class="card-usage">Usage: <code>/command3 [parameters]</code></p>
+                        <h5 class="card-title">/mute</h5>
+                        <p class="card-description">Mutes a user in the server.</p>
+                        <p class="card-usage">Usage: <code>/mute &lt;username&gt; &lt;duration&gt; [reason]</code></p>
+                        <div class="card-arguments">
+                            <div class="argument">
+                                <span class="arg-label">Username:</span>
+                                <span class="arg-detail">The user to mute.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                            <div class="argument">
+                                <span class="arg-label">Duration:</span>
+                                <span class="arg-detail">How long the mute will last.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                            <div class="argument">
+                                <span class="arg-label">Reason:</span>
+                                <span class="arg-detail">Reason for muting the user.</span>
+                                <span class="arg-type optional">Optional</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card command-card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Command 4</h5>
-                        <p class="card-description">Use this command to handle operation E. Ideal for scenario F.</p>
-                        <p class="card-usage">Usage: <code>/command4 [flags]</code></p>
+                        <h5 class="card-title">/verify</h5>
+                        <p class="card-description">Verifies a user with a specific level and status.</p>
+                        <p class="card-usage">Usage: <code>/verify &lt;username&gt; &lt;level&gt; &lt;status&gt;</code></p>
+                        <div class="card-arguments">
+                            <div class="argument">
+                                <span class="arg-label">Username:</span>
+                                <span class="arg-detail">The user to verify.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                            <div class="argument">
+                                <span class="arg-label">Level:</span>
+                                <span class="arg-detail">Verification level.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                            <div class="argument">
+                                <span class="arg-label">Status:</span>
+                                <span class="arg-detail">Verification status.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card command-card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Command 5</h5>
-                        <p class="card-description">This command performs task G and is beneficial for process H.</p>
-                        <p class="card-usage">Usage: <code>/command5 [options]</code></p>
+                        <h5 class="card-title">/autorole</h5>
+                        <p class="card-description">Sets an automatic role for new users.</p>
+                        <p class="card-usage">Usage: <code>/autorole &lt;role&gt;</code></p>
+                        <div class="card-arguments">
+                            <div class="argument">
+                                <span class="arg-label">Role:</span>
+                                <span class="arg-detail">The role to assign automatically.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card command-card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Command 6</h5>
-                        <p class="card-description">Utilize this command for feature I. It provides result J.</p>
-                        <p class="card-usage">Usage: <code>/command6 [args]</code></p>
+                        <h5 class="card-title">/punishment-search</h5>
+                        <p class="card-description">Searches for punishments based on criteria.</p>
+                        <p class="card-usage">Usage: <code>/punishment-search &lt;type&gt; &lt;predicate&gt; &lt;value&gt;</code></p>
+                        <div class="card-arguments">
+                            <div class="argument">
+                                <span class="arg-label">Type:</span>
+                                <span class="arg-detail">Type of punishment to search for.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                            <div class="argument">
+                                <span class="arg-label">Predicate:</span>
+                                <span class="arg-detail">Condition to match the punishment.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                            <div class="argument">
+                                <span class="arg-label">Value:</span>
+                                <span class="arg-detail">Value to match the predicate.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card command-card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Command 7</h5>
-                        <p class="card-description">Command for managing K. Best used for task L.</p>
-                        <p class="card-usage">Usage: <code>/command7 [parameters]</code></p>
+                        <h5 class="card-title">/antiswear list</h5>
+                        <p class="card-description">Lists all antiswear words.</p>
+                        <p class="card-usage">Usage: <code>/antiswear list</code></p>
+                        <div class="card-arguments">
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card command-card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Command 8</h5>
-                        <p class="card-description">This command executes action M and handles scenario N.</p>
-                        <p class="card-usage">Usage: <code>/command8 [flags]</code></p>
+                        <h5 class="card-title">/antiswear add</h5>
+                        <p class="card-description">Adds a new antiswear word.</p>
+                        <p class="card-usage">Usage: <code>/antiswear add &lt;word&gt;</code></p>
+                        <div class="card-arguments">
+                            <div class="argument">
+                                <span class="arg-label">Word:</span>
+                                <span class="arg-detail">The word to add to the antiswear list.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card command-card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Command 9</h5>
-                        <p class="card-description">Use this command to execute function O. Ideal for case P.</p>
-                        <p class="card-usage">Usage: <code>/command9 [options]</code></p>
+                        <h5 class="card-title">/antiswear remove</h5>
+                        <p class="card-description">Removes an antiswear word.</p>
+                        <p class="card-usage">Usage: <code>/antiswear remove &lt;word&gt;</code></p>
+                        <div class="card-arguments">
+                            <div class="argument">
+                                <span class="arg-label">Word:</span>
+                                <span class="arg-detail">The word to remove from the antiswear list.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card command-card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Command 10</h5>
-                        <p class="card-description">This command is used for operation Q. Suitable for situations R.</p>
-                        <p class="card-usage">Usage: <code>/command10 [args]</code></p>
+                        <h5 class="card-title">/setlanguage</h5>
+                        <p class="card-description">Sets the language for the server.</p>
+                        <p class="card-usage">Usage: <code>/setlanguage &lt;language&gt;</code></p>
+                        <div class="card-arguments">
+                            <div class="argument">
+                                <span class="arg-label">Language:</span>
+                                <span class="arg-detail">The language to set.</span>
+                                <span class="arg-type required">Required</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </main>
+
+</body>
+</html>
+
 
 </body>
 </html>

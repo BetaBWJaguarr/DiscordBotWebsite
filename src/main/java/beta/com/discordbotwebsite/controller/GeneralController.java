@@ -34,36 +34,54 @@ public class GeneralController extends BaseController {
         return "general/servers/managemodules/managemodules";
     }
 
+    @GetMapping("/servers/manage-modules/antispam")
+    public String showManageModulesAntiSpam(Model model) {
+        return "general/servers";
+    }
+
+    @GetMapping("/servers/manage-modules/antivirus")
+    public String showManageModulesAntiVirus(Model model) {
+        return "general/servers";
+    }
+
+    @GetMapping("/servers/manage-modules/verifysystem")
+    public String showManageModulesVerifySystem(Model model) {
+        return "general/servers";
+    }
+
+    @GetMapping("/servers/manage-modules/voiceaction")
+    public String showManageModulesVoiceAction(Model model) {
+        return "general/servers";
+    }
+
     @GetMapping("/servers")
     public String showServers(Model model, HttpSession session) {
         String email = (String) session.getAttribute("email");
-        if (email != null) {
-            Optional<User> optionalUser = userRepository.findByEmail(email);
-            if (optionalUser.isPresent()) {
-                User user = optionalUser.get();
-                String discordId = user.getDiscordid();
-                List<Guild> guilds = discordManager.getGuildsWhereUserIsAdmin(discordId);
-
-                List<GuildDTO> guildDTOs = guilds.stream()
-                        .map(guild -> {
-                            String iconUrl = guild.getIconUrl();
-                            if (iconUrl != null) {
-                                iconUrl = "https://cdn.discordapp.com/icons/" + guild.getId() + "/" + iconUrl + ".png";
-                            } else {
-                                iconUrl = "/images/default-server.jpg";
-                            }
-                            return new GuildDTO(guild.getId(), guild.getName(), iconUrl);
-                        })
-                        .collect(Collectors.toList());
-
-                guildDTOs.forEach(guildDTO -> System.out.println("GuildDTO: " + guildDTO.getName() + " | Icon URL: " + guildDTO.getIconUrl()));
-                model.addAttribute("servers", guildDTOs);
-            } else {
-                model.addAttribute("servers", List.of());
-            }
-        } else {
+        if (email == null) {
             model.addAttribute("servers", List.of());
+            return "general/servers/servers";
         }
+
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        if (optionalUser.isEmpty()) {
+            model.addAttribute("servers", List.of());
+            return "general/servers/servers";
+        }
+
+        User user = optionalUser.get();
+        String discordId = user.getDiscordid();
+        List<Guild> guilds = discordManager.getGuildsWhereUserIsAdmin(discordId);
+
+        List<GuildDTO> guildDTOs = guilds.stream()
+                .map(guild -> {
+                    String iconUrl = Optional.ofNullable(guild.getIconUrl())
+                            .map(url -> "https://cdn.discordapp.com/icons/" + guild.getId() + "/" + url + ".png")
+                            .orElse("/images/default-server.jpg");
+                    return new GuildDTO(guild.getId(), guild.getName(), iconUrl);
+                })
+                .collect(Collectors.toList());
+
+        model.addAttribute("servers", guildDTOs);
         return "general/servers/servers";
     }
 

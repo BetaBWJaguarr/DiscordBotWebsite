@@ -9,8 +9,13 @@ body {
 
 .navbar {
     background: linear-gradient(90deg, #ff69b4 0%, #ff85c0 100%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 15px 0;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+.navbar:hover {
+    background: linear-gradient(90deg, #ff85c0 0%, #ff69b4 100%);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 .navbar-brand, .nav-link {
     font-size: 1.2rem;
@@ -35,12 +40,29 @@ body {
 .nav-link {
     color: #f0f0f0;
     margin-left: 20px;
-    transition: transform 0.3s ease, color 0.3s ease;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #ff1493;
+    transition: width 0.3s ease;
+}
+
+
 .nav-link:hover {
-    color: #892edc;
-    transform: scale(1.1);
+    color: #ff1493;
+    transform: translateY(-2px);
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 .nav-link.contact-link {

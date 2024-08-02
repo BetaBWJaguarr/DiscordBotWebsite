@@ -15,7 +15,12 @@
         <p>
             Here you can view and manage all the Discord servers where the Moderation Bot is active.
         </p>
-        <div class="row">
+
+        <div th:if="${#lists.isEmpty(servers)}" class="no-servers-message">
+            <p>No servers available at the moment.</p>
+        </div>
+
+        <div th:unless="${#lists.isEmpty(servers)}" class="row">
             <div class="col-md-4" th:each="server : ${servers}">
                 <div class="server-card">
                     <img th:src="${server.iconUrl}" alt="Server Image">
