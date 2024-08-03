@@ -15,9 +15,20 @@ public class ServerSettingsService {
         this.collection = repository.getCollection();
     }
 
+    // Setter Methods
     public void setAntiSpamEnabled(String discordServerId, boolean antiSpamEnabled) {
         ServerSettings serverSettings = new ServerSettings(collection);
         serverSettings.setAntiSpamEnabled(discordServerId, antiSpamEnabled);
+    }
+
+    public void setAntiSpamMessageLimit(String discordServerId, int messageLimit) {
+        ServerSettings serverSettings = new ServerSettings(collection);
+        serverSettings.setAntiSpamMessageLimit(discordServerId, messageLimit);
+    }
+
+    public void setAntiSpamTimeLimit(String discordServerId, int timeLimit) {
+        ServerSettings serverSettings = new ServerSettings(collection);
+        serverSettings.setAntiSpamTimeLimit(discordServerId, timeLimit);
     }
 
     public void setAntiVirusEnabled(String discordServerId, boolean antiVirusEnabled) {
@@ -33,5 +44,36 @@ public class ServerSettingsService {
     public void setVoiceActionEnabled(String discordServerId, boolean voiceActionEnabled) {
         ServerSettings serverSettings = new ServerSettings(collection);
         serverSettings.setVoiceActionEnabled(discordServerId, voiceActionEnabled);
+    }
+
+    // Getter Methods
+    public boolean isAntiSpamEnabled(String discordServerId) {
+        ServerSettings serverSettings = new ServerSettings(collection);
+        return serverSettings.isAntiSpamEnabled(discordServerId);
+    }
+
+    public Integer getAntiSpamMessageLimit(String discordServerId) {
+        ServerSettings serverSettings = new ServerSettings(collection);
+        return serverSettings.getAntiSpamMessageLimit(discordServerId);
+    }
+
+    public Integer getAntiSpamTimeLimit(String discordServerId) {
+        ServerSettings serverSettings = new ServerSettings(collection);
+        return serverSettings.getAntiSpamTimeLimit(discordServerId);
+    }
+
+    public boolean isAntiVirusEnabled(String discordServerId) {
+        ServerSettings serverSettings = new ServerSettings(collection);
+        return serverSettings.isAntiVirusEnabled(discordServerId);
+    }
+
+    public boolean isVerifySystemEnabled(String discordServerId) {
+        ServerSettings serverSettings = new ServerSettings(collection);
+        return serverSettings.isVerifySystemEnabled(discordServerId);
+    }
+
+    public boolean isVoiceActionEnabled(String discordServerId) {
+        ServerSettings serverSettings = new ServerSettings(collection);
+        return serverSettings.isVoiceActionEnabled(discordServerId);
     }
 }

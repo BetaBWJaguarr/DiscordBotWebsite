@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antispam Module Settings</title>
+  <link rel="stylesheet" th:href="@{/general/servers/managemodules/antispam/css/antispammodules.css}">
+</head>
+<body>
+
+<main class="container my-5" layout:fragment="content">
+  <section class="antispam-settings">
+    <h1 class="text-center mb-4">Antispam Module Settings</h1>
+    <div class="module-description mb-5">
+      <p class="text-center">Configure your antispam module settings to better filter unwanted messages and prevent spam.</p>
+    </div>
+
+    <form th:action="@{/servers/manage-modules/antispam/update}" method="post" class="settings-form">
+      <input type="hidden" name="serverId" th:value="${serverId}" />
+
+      <div class="setting-item mb-4">
+        <label class="setting-label">Enable Antispam:</label>
+        <div th:replace="~{fragments/fragments :: toggleField('antispam-toggle','antispamEnabled',${antispamEnabled},'toggle-switch')}"></div>
+      </div>
+
+      <div class="setting-item mb-4">
+        <label class="setting-label">Message Limit:</label>
+        <div class="value-container">
+          <div class="value-label">Old Value: <span th:text="${messageLimit}">0</span></div>
+          <label class="input-label">New Value:</label>
+          <div th:replace="~{fragments/fragments :: inputField('number','messageLimit','messageLimit','antispam.messagelimit.tag','antispam.messagelimit.label','','is-invalid','invalid-feedback',${messageLimit})}"></div>
+        </div>
+      </div>
+
+      <div class="setting-item mb-4">
+        <label class="setting-label">Time Limit (minutes):</label>
+        <div class="value-container">
+          <div class="value-label">Old Value: <span th:text="${timeLimit}"></span></div>
+          <label class="input-label">New Value:</label>
+          <div th:replace="~{fragments/fragments :: inputField('number','timeLimit','timeLimit','antispam.timelimit.tag','antispam.timelimit.label','','is-invalid','invalid-feedback',${timeLimit})}"></div>
+        </div>
+      </div>
+
+      <div class="status-text mt-3 mb-4">
+        <span id="status-label">Antispam Module is <strong th:text="${antispamEnabled} ? 'ON' : 'OFF'">OFF</strong></span>
+      </div>
+
+      <button type="submit" class="btn btn-settings mt-4">Save Settings</button>
+    </form>
+  </section>
+</main>
+
+</body>
+</html>

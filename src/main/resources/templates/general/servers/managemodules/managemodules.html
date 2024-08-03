@@ -22,7 +22,7 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">Antispam Module</h5>
                         <p class="card-text">This module filters out unwanted emails and messages, helping to maintain a clean inbox and reduce spam-related issues.</p>
-                        <a href="#" class="btn btn-settings">Settings</a>
+                        <a th:href="@{/servers/manage-modules/{serverId}/antispam(serverId=${serverId})}" class="btn btn-settings">Antispam Settings</a>
                     </div>
                 </div>
             </div>

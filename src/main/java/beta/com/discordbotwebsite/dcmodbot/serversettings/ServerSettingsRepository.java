@@ -10,7 +10,7 @@ public class ServerSettingsRepository {
     private final MongoCollection<Document> collection;
 
     public ServerSettingsRepository(MongoDB mongoDB) {
-        this.collection = mongoDB.getCollection("serverSettings");
+        this.collection = mongoDB.getCollection("ServerSettings");
     }
 
     public MongoCollection<Document> getCollection() {

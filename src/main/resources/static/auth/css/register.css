@@ -6,10 +6,12 @@ body {
 
 .form-container {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 55px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 0.6s ease-out;
+    max-width: 750px;
+    width: 100%;
 }
 
 h2 {
@@ -25,17 +27,16 @@ h2 {
 }
 
 .input-group {
-    margin-bottom: 15px;
-    position: relative;
-    padding-bottom: 5px;
+    margin-bottom: 25px;
 }
 
 .form-control {
     height: 50px;
-    font-size: 18px;
-    padding: 20px;
+    font-size: 16px;
+    padding: 10px;
     border: 2px solid #ccc;
-    font-weight: 500;
+    border-radius: 8px;
+    font-weight: 400;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -96,7 +97,7 @@ h2 {
 .error-message {
     color: #e74c3c;
     font-size: 0.875rem;
-    margin-top: 5px;
+    margin-top: 7px;
     display: block;
     position: absolute;
     bottom: -15px;
@@ -106,13 +107,12 @@ h2 {
 }
 
 .form-check {
-    position: relative;
     display: flex;
     align-items: center;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 6px;
     background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
     gap: 10px;
 }
@@ -181,6 +181,7 @@ h2 {
     color: #ef32d9;
     font-weight: bold;
     margin-bottom: 20px;
+    text-align: center;
     transition: color 0.3s;
 }
 

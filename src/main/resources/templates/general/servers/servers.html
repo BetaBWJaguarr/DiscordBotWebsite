@@ -23,10 +23,12 @@
         <div th:unless="${#lists.isEmpty(servers)}" class="row">
             <div class="col-md-4" th:each="server : ${servers}">
                 <div class="server-card">
-                    <img th:src="${server.iconUrl}" alt="Server Image">
+                    <img th:src="${server}" alt="Server Image">
                     <div class="server-card-body">
                         <div class="server-card-title" th:text="${server.name}">Server Name</div>
-                        <a href="#" th:href="@{/servers/manage-modules}" class="btn btn-primary btn-manage">Manage Modules</a>
+                        <a href="#" th:href="@{/servers/manage-modules/{serverId}(serverId=${server.id})}" class="btn btn-primary btn-manage">
+                            Manage Modules
+                        </a>
                     </div>
                 </div>
             </div>

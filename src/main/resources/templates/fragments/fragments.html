@@ -7,17 +7,26 @@
 </head>
 <body>
 
-<th:block th:fragment="inputField(type, id, name, labelKey, placeholderKey, fieldName, errorClass, errorMessageClass)">
+<th:block th:fragment="inputField(type, id, name, labelKey, placeholderKey, fieldName, errorClass, errorMessageClass, value)">
     <div class="mb-3">
         <label th:for="${id}" class="form-label" th:text="#{${labelKey}}"></label>
-        <input th:type="${type}" class="form-control" th:id="${id}" th:name="${name}"
-               th:field="*{__${fieldName}__}" th:placeholder="#{${placeholderKey}}"
-               th:classappend="${#fields.hasErrors(fieldName)} ? ${errorClass} : ''">
-        <div th:if="${#fields.hasErrors(fieldName)}"
-             th:classappend="${errorMessageClass}"
-             th:errors="*{__${fieldName}__}"></div>
+        <div th:if="${fieldName != ''}">
+            <input th:type="${type}" class="form-control" th:id="${id}" th:name="${name}"
+                   th:field="*{${fieldName}}" th:placeholder="#{${placeholderKey}}"
+                   th:value="${value}"
+                   th:classappend="${#fields.hasErrors(fieldName)} ? ${errorClass} : ''">
+            <div th:if="${#fields.hasErrors(fieldName)}"
+                 th:classappend="${errorMessageClass}"
+                 th:errors="*{${fieldName}}"></div>
+        </div>
+        <div th:if="${fieldName == ''}">
+            <input th:type="${type}" class="form-control" th:id="${id}" th:name="${name}"
+                   th:placeholder="#{${placeholderKey}}"
+                   th:value="${value}">
+        </div>
     </div>
 </th:block>
+
 
 
 <th:block th:fragment="checkboxField(id, name, labelKey, fieldName, errorClass, errorMessageClass)">
@@ -29,6 +38,14 @@
              th:classappend="${errorMessageClass}"
              th:errors="*{__${fieldName}__}"></div>
     </div>
+</th:block>
+
+
+<th:block th:fragment="toggleField(id, name, checked, class)">
+    <label th:class="${class}">
+        <input type="checkbox" th:id="${id}" th:name="${name}" th:checked="${checked}">
+        <span class="slider round"></span>
+    </label>
 </th:block>
 
 <th:block th:fragment="selectField(id, name, labelKey, fieldName, optionList, errorClass, errorMessageClass)">
