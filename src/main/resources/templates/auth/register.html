@@ -11,14 +11,26 @@
 <body>
 <div class="container-fluid">
     <div class="row vh-100">
-        <!-- Left Image Section -->
         <div class="col-md-6 bg-image">
             <div class="overlay">
-                <!-- Optional content or text inside the overlay can be placed here -->
+                <div class="overlay-content">
+                    <h1 th:text="#{register.welcome.title}"></h1>
+                    <p th:text="#{register.welcome.message1}"></p>
+                    <p th:text="#{register.welcome.message2}"></p>
+                    <p>
+                        <span th:text="#{register.welcome.message3}">If you have any questions, feel free to </span>
+                        <a th:href="'mailto:tunarasimocak@gmail.com'" th:text="#{register.welcome.contact}">contact our support team</a>.
+                    </p>
+                    <div class="icon-group">
+                        <p class="icon-text"><i class="fas fa-microphone"></i> <span th:text="#{register.icon.feedback}"></span></p>
+                        <p class="icon-text"><i class="fas fa-envelope"></i> <span th:text="#{register.icon.email}"></span> <a href="mailto:tunarasimocak@gmail.com">tunarasimocak@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="large-icon-overlay">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
             </div>
         </div>
-
-        <!-- Right Form Section -->
         <div class="col-md-6 d-flex align-items-center justify-content-center">
             <div class="form-container">
                 <h2 id="signup-title" class="text-center mb-4" th:text="#{register.title}"></h2>
@@ -45,7 +57,7 @@
                         <div class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="interests" class="form-label" th:text="#{register.interests.label}">Interests / Activities</label>
+                        <label for="interests" class="form-label" th:text="#{register.interests.label}"></label>
                         <div id="interests" class="interests-container">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="interest1" name="interests" th:field="*{interests.activities}" value="Software">

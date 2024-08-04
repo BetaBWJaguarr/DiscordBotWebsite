@@ -101,6 +101,11 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.btn-settings:active {
+    background-color: #c2185b !important;
+    color: #ffebef !important;
+}
+
 .search-bar {
     display: flex;
     justify-content: center;

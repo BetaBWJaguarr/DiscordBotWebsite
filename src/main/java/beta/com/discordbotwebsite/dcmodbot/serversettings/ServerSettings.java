@@ -1,11 +1,14 @@
 package beta.com.discordbotwebsite.dcmodbot.serversettings;
 
+import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
 import com.mongodb.client.model.Updates;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServerSettings {
@@ -107,5 +110,78 @@ public class ServerSettings {
             return document.getEmbedded(List.of("settings", "voiceAction"), Boolean.class);
         }
         return false;
+    }
+
+    //Auto Punish Feature
+    public void setAutoPunishEnabled(String discordServerId, boolean enabled) {
+        Bson filter = Filters.eq("_id", discordServerId);
+        Bson update = Updates.set("settings.autopunish", enabled);
+        collection.updateOne(filter, update, new UpdateOptions().upsert(true));
+    }
+
+    public boolean isAutoPunishEnabled(String discordServerId) {
+        Document document = collection.find(Filters.eq("_id", discordServerId)).first();
+        if (document != null) {
+            Boolean autoPunish = document.getEmbedded(List.of("settings", "autopunish"), Boolean.class);
+            return autoPunish != null ? autoPunish : false;
+        }
+        return false;
+    }
+
+    // AntiSwear Feature
+    public void setAntiSwearEnabled(String discordServerId, boolean enabled) {
+        Bson filter = Filters.eq("_id", discordServerId);
+        Bson update = Updates.set("settings.antiswearfeatures.enabled", enabled);
+        collection.updateOne(filter, update, new UpdateOptions().upsert(true));
+    }
+
+    public boolean getAntiSwearEnabled(String discordServerId) {
+        try {
+            Document document = collection.find(Filters.eq("_id", discordServerId)).first();
+            if (document != null) {
+                Document settings = document.get("settings", Document.class);
+                if (settings != null) {
+                    Document antiSwearFeatures = settings.get("antiswearfeatures", Document.class);
+                    if (antiSwearFeatures != null) {
+                        Boolean enabled = antiSwearFeatures.getBoolean("enabled");
+                        return enabled != null ? enabled : false;
+                    }
+                }
+            }
+        } catch (MongoException e) {
+            System.err.println("Error retrieving AntiSwear status: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public void addAntiSwearWord(String discordServerId, String word) {
+        Bson filter = Filters.eq("_id", discordServerId);
+        Bson update = Updates.addToSet("settings.antiswearfeatures.words-list", word);
+        collection.updateOne(filter, update, new UpdateOptions().upsert(true));
+    }
+
+    public void removeAntiSwearWord(String discordServerId, String word) {
+        Bson filter = Filters.eq("_id", discordServerId);
+        Bson update = Updates.pull("settings.antiswearfeatures.words-list", word);
+        collection.updateOne(filter, update, new UpdateOptions().upsert(true));
+    }
+
+    public List<String> getAntiSwearWordsList(String discordServerId) {
+        try {
+            Document document = collection.find(Filters.eq("_id", discordServerId)).first();
+            if (document != null) {
+                Document settings = document.get("settings", Document.class);
+                if (settings != null) {
+                    Document antiSwearFeatures = settings.get("antiswearfeatures", Document.class);
+                    if (antiSwearFeatures != null) {
+                        List<String> wordsList = (List<String>) antiSwearFeatures.get("words-list");
+                        return wordsList != null ? wordsList : new ArrayList<>();
+                    }
+                }
+            }
+        } catch (MongoException e) {
+            System.err.println("Error retrieving AntiSwear words list: " + e.getMessage());
+        }
+        return new ArrayList<>();
     }
 }

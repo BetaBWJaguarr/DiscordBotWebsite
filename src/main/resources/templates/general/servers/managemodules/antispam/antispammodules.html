@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Antispam Module Settings</title>
   <link rel="stylesheet" th:href="@{/general/servers/managemodules/antispam/css/antispammodules.css}">
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}" />
+  <link th:href="@{https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap}" rel="stylesheet">
 </head>
 <body>
 
@@ -24,30 +26,37 @@
         <label class="setting-label">Enable Antispam:</label>
         <div th:replace="~{fragments/fragments :: toggleField('antispam-toggle','antispamEnabled',${antispamEnabled},'toggle-switch')}"></div>
       </div>
-
       <div class="setting-item mb-4">
-        <label class="setting-label">Message Limit:</label>
+        <label class="setting-label"><span th:text="#{general.servers.managemodules.antispam.messagelimit.tag}"></span></label>
         <div class="value-container">
-          <div class="value-label">Old Value: <span th:text="${messageLimit}">0</span></div>
-          <label class="input-label">New Value:</label>
-          <div th:replace="~{fragments/fragments :: inputField('number','messageLimit','messageLimit','antispam.messagelimit.tag','antispam.messagelimit.label','','is-invalid','invalid-feedback',${messageLimit})}"></div>
+          <div class="value-label"><span th:text="#{general.servers.managemodules.antispam.oldvalue}"></span> <span th:text="${messageLimit}">0</span></div>
+          <label class="input-label"><span th:text="#{general.servers.managemodules.antispam.newvalue}"></span></label>
+          <div th:replace="~{fragments/fragments :: inputField('number','messageLimit','messageLimit','general.servers.managemodules.antispam.messagelimit.tag','general.servers.managemodules.antispam.messagelimit.label','','is-invalid','invalid-feedback',${messageLimit})}"></div>
+          <div class="info-box">
+            <i class="fas fa-info-circle"></i>
+            <p>The message limit defines the maximum number of messages a user can send in a specified time frame. Adjust this setting to control spam frequency.</p>
+          </div>
         </div>
       </div>
-
       <div class="setting-item mb-4">
-        <label class="setting-label">Time Limit (minutes):</label>
+        <label class="setting-label"><span th:text="#{general.servers.managemodules.antispam.timelimit.tag}"></span></label>
         <div class="value-container">
-          <div class="value-label">Old Value: <span th:text="${timeLimit}"></span></div>
-          <label class="input-label">New Value:</label>
-          <div th:replace="~{fragments/fragments :: inputField('number','timeLimit','timeLimit','antispam.timelimit.tag','antispam.timelimit.label','','is-invalid','invalid-feedback',${timeLimit})}"></div>
+          <div class="value-label"><span th:text="#{general.servers.managemodules.antispam.oldvalue}"></span> <span th:text="${timeLimit}"></span></div>
+          <label class="input-label"><span th:text="#{general.servers.managemodules.antispam.newvalue}"></span></label>
+          <div th:replace="~{fragments/fragments :: inputField('number','timeLimit','timeLimit','general.servers.managemodules.antispam.timelimit.tag','general.servers.managemodules.antispam.timelimit.label','','is-invalid','invalid-feedback',${timeLimit})}"></div>
+          <div class="info-box">
+            <i class="fas fa-info-circle"></i>
+            <p>The time limit specifies the time period (in seconds) in which the message limit applies. Shorter periods mean stricter spam control.</p>
+          </div>
         </div>
       </div>
-
       <div class="status-text mt-3 mb-4">
         <span id="status-label">Antispam Module is <strong th:text="${antispamEnabled} ? 'ON' : 'OFF'">OFF</strong></span>
       </div>
-
-      <button type="submit" class="btn btn-settings mt-4">Save Settings</button>
+      <button type="submit" class="btn btn-settings mt-4">
+        <i class="fas fa-save"></i>
+        <span th:text="#{general.servers.managemodules.antispam.button.label}"></span>
+      </button>
     </form>
   </section>
 </main>

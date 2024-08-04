@@ -5,46 +5,70 @@
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
-    border-radius: 2px;
-    margin: 5px 0;
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 600px;
     font-size: 1.2em;
 }
 
 .server-card {
     border: 1px solid #f8bbd0;
-    border-radius: 12px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
     overflow: hidden;
     background-color: #ffffff;
+    position: relative;
+    animation: cardAppear 0.5s ease-out;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .server-card:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px) rotate(2deg);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .server-card img {
     width: 100%;
-    height: 160px;
+    height: 180px;
     object-fit: cover;
-    border-bottom: 3px solid #f48fb1;
+    border-bottom: 4px solid #ec407a;
 }
 
 .server-card-body {
     padding: 20px;
     text-align: center;
     background: linear-gradient(145deg, #f8bbd0, #f48fb1);
+    transition: background 0.4s ease;
+}
+
+.server-card:hover .server-card-body {
+    background: linear-gradient(145deg, #f48fb1, #f8bbd0);
+}
+
+.server-card:hover .server-card-title {
+    color: #d81b60;
 }
 
 .server-card-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin: 12px 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 15px 0;
     color: #880e4f;
+    text-transform: capitalize;
 }
-
 
 .btn-manage {
     margin-top: 15px;
@@ -63,20 +87,27 @@
     background-color: #d81b60;
 }
 
+.btn-manage:active {
+    background-color: #d81b60 !important;
+}
+
 .server-list {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .server-list h1 {
-    margin-bottom: 20px;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: bold;
     text-align: center;
+    color: #d81b60;
+    margin-bottom: 20px;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .server-list p {
     text-align: center;
+    font-size: 1.2rem;
+    color: #555;
     margin-bottom: 30px;
-    font-size: 1.1rem;
 }

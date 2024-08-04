@@ -163,6 +163,27 @@ input.form-control:focus {
     box-shadow: none;
 }
 
+.info-box {
+    display: flex;
+    align-items: center;
+    background-color: #e1f5fe;
+    border: 1px solid #b3e5fc;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.info-box i {
+    color: #0288d1;
+    margin-right: 10px;
+}
+
+.info-box p {
+    font-size: 0.9rem;
+    color: #0277bd;
+    margin: 0;
+}
+
 @media (max-width: 768px) {
     h1 {
         font-size: 1.8rem;
